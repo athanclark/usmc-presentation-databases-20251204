@@ -12,7 +12,7 @@ style: |
   }
 ---
 
-![bg left:40% 80%](/home/athan/Pictures/3nb.png)
+![bg left:40% 80%](./3nb.png)
 
 # Foundations of Databases
 
@@ -22,40 +22,42 @@ _Presented on 20251204_
 
 ---
 
+# SSgt Clark
+
+Platoon Sergeant
+3D Network Battalion, Detachment Hawaii
+
+- Software Developer for ~15 Years
+- Software Engineering & Computer Science Enthusiast
+    - Working Toward Degree and PE Licensure
+- CompTIA A+, Net+, Sec+, CySA+
+- Google Data Analytics, Professional Scrum Master Level 1
+- Lean Six Sigma Yellow Belt
+
+---
+
 ## Outline
 
 1. Introduction
 2. Definitions
 3. Example Databases
 4. Relational Databases
-    1. Create, Read, Update, Delete
 5. Structured Query Language
-    1. Indexes
-    2. Relations
-    3. Defaults and Constraints
-
----
-
-## Outline
-
 6. Advanced Concepts
-    1. Events and Triggers
-    2. Views and Joins
-    3. Sub-Queries
-    4. Stored Procedures
-    5. Transactions and Atomicity
 7. Security Implications
 8. Conclusion
 
 ---
 
-![bg left:40% 80%](/home/athan/Pictures/foundations.jpg)
+![bg left:40% 80%](./foundations.jpg)
 
 ## Introduction
 
 > In a nutshell, a database management system is a software system that enables the creation, maintenance, and use of large amounts of data.
 
-Involve **Diverse Concepts**: Storage Paradigms, Language Models, Precision, Concurrency, Ability to Scale
+Diverse Requirements Impose Competition:
+
+Storage Paradigms, Language Models, Precision, Concurrency, Scalability
 
 
 
@@ -71,9 +73,9 @@ Databases involve diverse concepts - logical paradigm, query language model, pre
 
 ## Definitions
 
-- Database vs. Database Management System
+- **Database** vs. Database Management System (DBMS)
 - Query ~ _"Question"_ or _"Do This"_
-- Key / Index ~ Unique Identifier - EDIPI, Item Instance Number
+- Key / Index = Unique Identifier: EDIPI, Item Instance Number
 - String, Integer / Floating Point Number, Boolean
     - `"Johnny B."`, `1775` / `5.56`, `FALSE`
 - Tuple, Array, Dictionary
@@ -93,7 +95,7 @@ Databases involve diverse concepts - logical paradigm, query language model, pre
 
 ## Definitions
 
-- Table, Column, Row
+- Table, Column, Row - just like Microsoft Excel
 
 | EDIPI | Name |
 | :--- | :---- |
@@ -109,13 +111,24 @@ Databases involve diverse concepts - logical paradigm, query language model, pre
 
 ## Definitions
 
-- Table, Column, Row
+- Table, Column, Row - alternative perspective
+
 ```js
 [
   (1553763807, "Clark SSgt Athan L"),
   (5, "Henderson BGen Archibald")
 ]
 ```
+
+---
+
+# Are We Good?
+
+---
+
+# Are We Good?
+
+## Cool.
 
 ---
 
@@ -139,12 +152,12 @@ $$ k \hookrightarrow (v1, v2, v3) $$
 > A Value or Tuple of Values **Uniquely Identified** by Some Key
 
 <dl>
-<dt>Implementations</dt>
-<dd>Redis, Memcached, In-Memory (HashMap, BTree)</dd>
-<dt>Features</dt>
+<dt><strong>Features</strong></dt>
 <dd>Extremely Fast, Easy to Parallelize (Scalable)</dd>
-<dt>Examples</dt>
+<dt><strong>Examples</strong></dt>
 <dd>Facebook Messanger, Session Cache</dd>
+<dt><strong>Implementations</strong></dt>
+<dd>Redis, Memcached, In-Memory (HashMap, BTree)</dd>
 </dl>
 
 <!-- Very High Performance, Scalable (clusters of DBs) -->
@@ -164,15 +177,15 @@ $$ k \hookrightarrow (v1, v2, v3) $$
 Person *--1 `Birth Place`
 ```
 
-> A Table of Values & Keys **Referenced** By Other Tables
+> Tables of Values & Keys **Referenced** By Other Tables
 
 <dl>
-<dt>Implementations</dt>
-<dd>SQL-based; PostgreSQL, MySQL, MSSQL, OracleDB</dd>
-<dt>Features</dt>
+<dt><strong>Features</strong></dt>
 <dd>Still Pretty Fast, Forces Data Consistency</dd>
-<dt>Examples</dt>
+<dt><strong>Examples</strong></dt>
 <dd>Blogs, Inventory Management Software, General Purpose</dd>
+<dt><strong>Implementations</strong></dt>
+<dd>SQL-based; PostgreSQL, MySQL, MSSQL, OracleDB</dd>
 </dl>
 
 <!-- Performant, demands data-consistency -->
@@ -191,12 +204,12 @@ Person *--1 `Birth Place`
 > Collections of Data Blobs
 
 <dl>
-<dt>Implementations</dt>
-<dd>MongoDB, Cassandra, DynamoDB</dd>
-<dt>Features</dt>
+<dt><strong>Features</strong></dt>
 <dd>Scalable, Flexible for Growing Projects</dd>
-<dt>Examples</dt>
+<dt><strong>Examples</strong></dt>
 <dd>Startups, When Final Requirements Aren't Certain</dd>
+<dt><strong>Implementations</strong></dt>
+<dd>MongoDB, Cassandra, DynamoDB</dd>
 </dl>
 
 <!-- 
@@ -211,6 +224,8 @@ Useful for startups - not sure what final requirements are
 
 ### Example Databases - Graph
 
+<div class="columns">
+
 ```dot
 digraph D {
   rankdir=LR
@@ -224,15 +239,30 @@ digraph D {
 }
 ```
 
+
+```dot
+graph D {
+  rankdir=LR
+  A -- B
+  A -- C
+  C -- B
+  C -- D
+  D -- A
+  D -- B
+}
+```
+
+</div>
+
 > Nodes and Edges
 
 <dl>
-<dt>Implementations</dt>
-<dd>Neo4J, SurrealDB</dd>
-<dt>Features</dt>
+<dt><strong>Features</strong></dt>
 <dd>Scalable, Flexible for Growing Projects, Queries that Follow Edges</dd>
-<dt>Examples</dt>
+<dt><strong>Examples</strong></dt>
 <dd>"People you Might Know", Ancestry</dd>
+<dt><strong>Implementations</strong></dt>
+<dd>Neo4J, SurrealDB</dd>
 </dl>
 
 <!--
@@ -251,12 +281,12 @@ $$ \mathbb{R} \hookrightarrow (v1, v2, v3, v4) $$
 > Optimized for Time-Based Queries
 
 <dl>
-<dt>Implementations</dt>
-<dd>TimescaleDB, ElasticSearch</dd>
-<dt>Features</dt>
+<dt><strong>Features</strong></dt>
 <dd>Depends on Underlying Implementation</dd>
-<dt>Examples</dt>
+<dt><strong>Examples</strong></dt>
 <dd>Stock Tickers, Log / Event Queues</dd>
+<dt><strong>Implementations</strong></dt>
+<dd>TimescaleDB, ElasticSearch</dd>
 </dl>
 
 <!--
@@ -264,6 +294,24 @@ $$ \mathbb{R} \hookrightarrow (v1, v2, v3, v4) $$
 Stock tickers, log / event queues
 
 -->
+
+---
+
+## Example Databases - Honorable Mentions
+
+- Full-Text Search
+- Vector Databases
+- Map/Reduce Databases
+
+---
+
+# We O.K.?
+
+---
+
+# We O.K.?
+
+## Cool.
 
 ---
 
@@ -316,14 +364,19 @@ _"CRUD"_
 
 # LIVE EXAMPLE
 
+## Create a Simple Table, Add and Manipulate Some Data
+
 ---
 
 ## SQL
 
-- Storage, Modification, Retreival
-    - Create, Read, Update, Delete
-- Organization, Relationships, Laws
-    - Table Design, Indexes / Foreign Keys, Constraints, Defaults
+Storage, Modification, Retreival via CRUD
+
+Also Includes Organization, Data Relationships, Enforcement of Laws:
+- Table Design
+- Indexes / Foreign Keys
+- Constraints
+- Default Values
 
 <!--
 
@@ -382,6 +435,22 @@ Favorite Color Default = _**Blue**_
 
 ---
 
+# Live Example
+
+## Table Design
+
+---
+
+# Check-In - Are We Okay?
+
+---
+
+# Check-In - Are We Okay?
+
+## Cool.
+
+---
+
 ## SQL - Indexes
 
 | EDIPI | Name | Rank | Gender |
@@ -431,25 +500,46 @@ Awards:
 
 ---
 
-# LIVE EXAMPLE
+# Live Example
+
+## Indexes and Foreign Keys
 
 ---
 
-## SQL - Defaults
+## SQL - Default Values
 
-- Default MCCU Size is "M/M"
-- Default Time that Leave Request Was Submitted is "Now"
-- Default Instance Number or Service Request Number is "The Next One" (increment)
+Example Concepts:
+
+- Default MCCU Size is "M/R"
+- Default Submission Time for a Leave Request that was just created is "Now"
+- Default EDIPI is "The Next One"
 
 ---
 
 ## SQL - Constraints
 
-- Uniqueness Constraints (without being an index)
+- Uniqueness Constraints
+  - No Marine should have a duplicate email address
 - Boundary Constraints
-  - all Marines' heights must be greater than 0
+  - All Marines' heights must be greater than 0
 - General Purpose and Programmable
-  - I can't create a service request at 02 Urgent if its operational status is "Operational - Minor"
+  - The IP Address for a device should be in its DHCP Zone
+
+---
+
+# Live Example
+
+## Constraints & Defaults
+
+---
+
+# How are we holding up?
+
+---
+
+# How are we holding up?
+
+## Cool.
 
 ---
 
@@ -461,6 +551,8 @@ Awards:
 4. Stored Procedures
 5. Transactions and Atomicity
 
+No examples for these because I don't want to waste your time
+
 ---
 
 ## Events and Triggers
@@ -469,7 +561,7 @@ Awards:
 
 - Prevent a deletion of a row if some criteria is met
 - Modify rows in another table if a row is created
-- Destroy the entire database if my payroll hasn't been updated in 1 month (logic bomb)
+- Destroy the entire database if my payroll hasn't been submitted in 1 month (logic bomb)
 
 ---
 
@@ -486,18 +578,20 @@ Awards:
 
 > Use the results of another query without having to execute it first
 
-_"Select all Marines who have done their height and weight this semi-annual period"_
-- one table for all Marines, another table for recorded HT/WT scores
+_"Select all of my Marines who have done their height and weight this semi-annual period"_
+
+
+_"Select all of my Marines -> Select their hights and weights for this semi-annual period"_
 
 ---
 
 ## Stored Procedures
 
-> SQL is not a "Turing Complete" programming language
+> SQL is not a _"Turing Complete"_ programming language
 
 SQL Can't create arbitrary programs that run forever on its own, but some people are crazy and want that ability in a database
 
-Examples: PL/SQL (Oracle), T-SQL (Microsoft), PL/pgSQL (PostgreSQL)
+PL/SQL (Oracle), T-SQL (Microsoft), PL/pgSQL (PostgreSQL)
 
 <dl>
 <dt>Pros</dt>
@@ -517,10 +611,22 @@ Atomic Transactions fix this, where conflicting datasets are locked if they're b
 
 ---
 
+# Did we make it?
+
+---
+
+# Did we make it?
+
+## Cool.
+
+---
+
 ## Security Implications
 
+Programmers are often dumb
+
 - How passwords are stored
-- Actually deleting important rows of data with no backup method
+- Data Integrity - Permanently deleting or modifying data
 - Session tokens are often stored in a session table - enables session hijacking
 
 <!---
@@ -534,9 +640,26 @@ other people, but they can be dumb.
 
 ## Conclusion
 
-> Databases are designed to retain, access, and manipulate large amounts of data quickly and preserve them indefinitely.
+![bg left:30% 80%](./qr.png)
 
-SQL is a decent solution to those problems, and is very popular. You'll likely see it sometime in your professional career.
+> Databases are designed to **retain**, **access**, and **manipulate** large amounts of data quickly and **preserve** them indefinitely.
+
+SQL is a popular, decent solution to those problems. You'll likely see it again in your professional career.
+
+Slides are available at [github.com/athanclark/usmc-presentation-databases-20251204](https://github.com/athanclark/usmc-presentation-databases-20251204)
+
+---
+
+# Vote on Next Topic
+
+1. Proxmox Virtualization System
+    - great for home labs
+2. Haskell Programming Language
+    - it's like joining a cult
+3. CPU Architecture
+    - fun!
+4. Abstract Algebra
+    - don't be afraid
 
 ---
 
